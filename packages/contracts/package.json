@@ -65,6 +65,7 @@
   "devDependencies": {
     "@codechecks/client": "^0.1.11",
     "@defi-wonderland/smock": "^2.0.2",
+    "@eth-optimism/chugsplash": "^0.1.0",
     "@ethersproject/abi": "^5.6.0",
     "@ethersproject/bytes": "^5.6.0",
     "@ethersproject/providers": "^5.6.0",

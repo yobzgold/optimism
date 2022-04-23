@@ -3,6 +3,7 @@ import 'solidity-coverage'
 import * as dotenv from 'dotenv'
 
 // Hardhat plugins
+import '@eth-optimism/chugsplash'
 import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
 import '@nomiclabs/hardhat-etherscan'
@@ -20,7 +21,7 @@ const enableGasReport = !!process.env.ENABLE_GAS_REPORT
 const privateKey = process.env.PRIVATE_KEY || '0x' + '11'.repeat(32) // this is to avoid hardhat error
 const deploy = process.env.DEPLOY_DIRECTORY || 'deploy'
 
-const config: HardhatUserConfig = {
+const config: HardhatUserConfig & any = {
   networks: {
     hardhat: {
       live: false,
