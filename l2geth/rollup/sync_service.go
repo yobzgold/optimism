@@ -279,8 +279,13 @@ func (s *SyncService) initializeLatestL1(ctcDeployHeight *big.Int) error {
 		s.SetLatestL1BlockNumber(context.BlockNumber)
 	} else {
 		log.Info("Found latest index", "index", *index)
+		latest := s.bc.CurrentBlock()
 		block := s.bc.GetBlockByNumber(*index + 1)
-		if block == nil {
+		if block == nil || latest.Number().Uint64() < block.Number().Uint64() {
+			if block == nil {
+				log.Info("No block found at index", "index", *index)
+			}
+
 			block = s.bc.CurrentBlock()
 			blockNum := block.Number().Uint64()
 			if blockNum > *index {
